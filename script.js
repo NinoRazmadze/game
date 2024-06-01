@@ -14,21 +14,61 @@ const modal = document.querySelector(".modal");
 const modal2 = document.querySelector(".modal-2");
 const btn = document.querySelector(".close-modal");
 const body = document.querySelector(".body");
-
+const btnAgain = document.querySelector(".btn--new");
+document.querySelector(".body").style.backdropFilter = "blur(0px)";
 //starting conditions
-const scores = [0, 0];
-score0El.textContent = 0;
-score1El.textContent = 0;
-diceEl.classList.add("hidden");
+let score, currentScore, activePlayer, playing;
+let scores;
+const init = function () {
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  playing = true;
 
-let currentScore = 0;
-let activePlayer = 0;
+  diceEl.classList.add("hidden");
+
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+  document
+    .querySelector(`.player--${activePlayer}`)
+    .classList.remove("player--winner");
+  player1El.classList.remove("player--active");
+};
+const again = function () {
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  playing = true;
+
+  diceEl.classList.add("hidden");
+
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+  document;
+
+  modal2.classList.add("hidden");
+  modal.classList.add("hidden");
+  document.querySelector(".body").style.backdropFilter = "blur(0)";
+
+  player0El.classList.remove("player--winner");
+  player1El.classList.remove("player--winner");
+  player1El.classList.remove("player--active");
+  player0El.classList.add("player--active");
+};
+document.querySelector(".body").style.backdropFilter = "blur(0)";
+
+init();
 let currentPlayer = document.getElementById(`current--${activePlayer}`);
-let playing = true;
 const switchPlayer = function () {
   currentPlayer.textContent = 0;
   activePlayer = activePlayer === 0 ? 1 : 0;
   currentScore = 0;
+  currentPlayer = document.getElementById(`current--${activePlayer}`);
+  currentPlayer.textContent = currentScore;
   player0El.classList.toggle("player--active");
   player1El.classList.toggle("player--active");
 };
@@ -47,6 +87,7 @@ btnRoll.addEventListener("click", function () {
       currentScore += dice;
       currentPlayer.textContent = currentScore;
     } else {
+      currentPlayer.textContent = 0;
       switchPlayer();
     }
   }
@@ -71,30 +112,19 @@ btnHold.addEventListener("click", function () {
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.remove("player--active");
+
       if (activePlayer === 0) {
         modal.classList.remove("hidden");
-        document.querySelector(".body").style.backgroundImage =
-          "url('game-ver.jpeg')";
+        document.querySelector(".body").style.backdropFilter = "blur(6px)";
       } else if (activePlayer === 1) {
         modal2.classList.remove("hidden");
-        document.querySelector(".body").style.backgroundImage =
-          "url('game-ver.jpeg')";
+        document.querySelector(".body").style.backdropFilter = "blur(6px)";
       }
-      btn.addEventListener("click", function () {
-        if (activePlayer === 0) {
-          modal.classList.add("hidden");
-          document.querySelector(".body").style.backgroundImage =
-            "url('game-ver.jpeg')";
-        } else if (activePlayer === 1) {
-          modal2.classList.add("hidden");
-        }
-      });
-
-      // activePlayer = 0
-      //   ? modal.classList.remove('hidden')
-      //   : modal2.classList.remove('hidden');
     } else {
       switchPlayer();
     }
   }
 });
+
+document.querySelector(".win1").addEventListener("click", again);
+document.querySelector(".win2").addEventListener("click", again);

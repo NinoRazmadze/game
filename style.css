@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
-
+@import url("https://fonts.cdnfonts.com/css/terexmal-sunday");
+@import url("https://db.onlinewebfonts.com/c/4c19fc875e7ba1e6831129de3ab5ac0b?family=Retro+Gaming");
 * {
   margin: 0;
   padding: 0;
@@ -23,6 +24,7 @@ main {
   border-radius: 9px;
   overflow: hidden;
   display: flex;
+  z-index: 9;
 }
 
 .player {
@@ -180,11 +182,18 @@ main {
   width: 100rem;
   height: 60rem;
 
-  background-image: url(game-img.jpeg);
+  background-image: url(samuraiver2.jpeg);
+  background-size: 100rem 60rem;
+
   padding: 6rem;
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 10;
+  text-align: center;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
 }
 
 .modal-2 {
@@ -195,11 +204,18 @@ main {
   width: 100rem;
   height: 60rem;
 
-  background-image: url(game-img2.jpeg);
+  background-image: url(samuraiver2.jpeg);
+  background-size: 100rem 60rem;
+
   padding: 6rem;
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 10;
+  text-align: center;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
 }
 .close-modal {
   position: absolute;
@@ -210,4 +226,41 @@ main {
   cursor: pointer;
   border: none;
   background: none;
+}
+
+.fit {
+  width: 100rem;
+  height: 60rem;
+}
+.modal-text {
+  font-size: 12rem;
+
+  color: #fff; /* White text color */
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #00aaff,
+    0 0 82px #00aaff, 0 0 92px #00aaff, 0 0 102px #00aaff, 0 0 151px #00aaff;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  font-family: "TEREXMAL SUNDAY", sans-serif;
+}
+.win1 {
+  background-color: black; /* Dark gray background */
+  color: #9461fd; /* White text */
+  border: 2px solid #666666; /* Slightly lighter gray border */
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: "Retro Gaming", sans-serif; /* Smooth hover transition */
+}
+
+.win1:hover {
+  background-color: #9461fd; /* Slightly darker gray background on hover */
+  color: black;
 }
