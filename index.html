@@ -31,19 +31,46 @@
       </section>
 
       <img src="dice-5.png" alt="Playing dice" class="dice" />
-      <button class="btn btn--new">🔄 New game</button>
-      <button class="btn btn--roll">🎲 Roll dice</button>
-      <button class="btn btn--hold">📥 Hold</button>
+      <button onmousedown="GameSound()" class="btn btn--new">🔄 New game</button>
+      <button onmousedown="playDiceSound()" class="btn btn--roll">
+        🎲 Roll dice
+      </button>
+
+      <audio id="GameSound">
+        <source src="achievement-sound-1-95506 (1).mp3" type="audio/mpeg">
+        
+      </audio>
+     
+      </audio>
+      <button onmousedown="playCoinSound()" class="btn btn--hold">📥 Hold</button>
+     
+        <audio id="diceAudio">
+          <source src="rolling-dice-2-102706.mp3" type="audio/mpeg">
+          <!-- Add additional source tags for other formats if needed -->
+        </audio>
+        
+        <audio id="coinAudio">
+          <source src="Pickup Coins 5 - QuickSounds.com.mp3" type="audio/mpeg">
+          <!-- Add additional source tags for other formats if needed -->
+        </audio>
     </main>
     <div class="modal hidden">
       <p class="modal-text">Player 1 wins⚔</p>
-      <button class="win1">New game</button>
+      <button onmousedown="newGameSound1()" class="win1">New game</button>
     </div>
     <div class="modal-2 hidden">
       <p class="modal-text">Player 2 wins⚔</p>
-      <button class="win2 win1">New game</button>
+      <button onmousedown="newGameSound2()" class="win2 win1">New game</button>
     </div>
+    <audio id="GameSound1">
+      <source src="achievement-sound-1-95506 (1).mp3" type="audio/mpeg">
+      
+    </audio>
+
 
     <script src="script.js"></script>
   </body>
 </html>
+
+
+

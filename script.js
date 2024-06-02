@@ -72,7 +72,47 @@ const switchPlayer = function () {
   player0El.classList.toggle("player--active");
   player1El.classList.toggle("player--active");
 };
-//rolling dice functionality
+// sounds
+const diceSound = document.getElementById("diceAudio");
+const coinSound = document.getElementById("coinAudio");
+const newGameSound = document.getElementById("GameSound1");
+
+function newGameSound1() {
+  newGameSound.play(); // Play the audio
+}
+
+function newGameSound2() {
+  newGameSound.play(); // Play the audio
+}
+
+// Add event listeners to buttons
+document.querySelector(".win1").addEventListener("mousedown", newGameSound1);
+document.querySelector(".win2").addEventListener("mousedown", newGameSound2);
+
+function playDiceSound() {
+  diceSound.play();
+}
+
+function playCoinSound() {
+  coinSound.play();
+}
+function updateAudioSource(newSource) {
+  coinAudio.src = newSource;
+  coinAudio.load();
+}
+function playWinningSound() {
+  const winningAudio = new Audio("27JS6W5-retro-win-game-sound-3.mp3");
+  winningAudio.play();
+}
+
+// Event listener for the button
+// document.querySelector(".btn--roll").addEventListener("mousedown", () => {
+//   if (score >= 10) {
+//     // Change the audio source to the new sound
+//     updateAudioSource("27JS6W5-retro-win-game-sound-3.mp3");
+//   }
+// });
+
 btnRoll.addEventListener("click", function () {
   if (playing) {
     //1generating random dice roll
@@ -105,6 +145,7 @@ btnHold.addEventListener("click", function () {
     if (scores[activePlayer] >= 100) {
       playing = false;
       diceEl.classList.add("hidden");
+      playWinningSound();
 
       document
         .querySelector(`.player--${activePlayer}`)
